@@ -2,8 +2,8 @@
 * in your own words. explain the four principle for the "this" keyword below.
 *
 * 1. Global Binding -- default binding  -- invoked in window/console context.
-* 2. Implicit Binding -- set in function -- object before the dot is what `this` will be bound to. Implicit binding occurs when dot notation is used to invoke a function. In implicit binding, whatever is to the left of the dot becomes the context for this in the function.
-* 3. New Binding - constructor functions -- refers to the specific instance of the object that is created and returned by the constructor function.
+* 2. Implicit Binding -- set in function -- object before (to the left of) the dot is what `this` will be bound to - it sets the context.
+* 3. New Binding - constructor functions -- refers to the specific instance of the object that is created and returned by a constructor function.
 * 4. Explicit Binding -- .call .bind & .apply -- whenever call or apply method is used, this is explicityly defined.
 *
 * write out a code example of each explanation above

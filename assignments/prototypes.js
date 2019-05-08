@@ -41,7 +41,50 @@
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
+/*/*  */
+
+function GameObject(props) {
+  this.createdAt = props.createdAt;
+  this.name = props.name;
+  this.dimensions = props.dimensions;
+}
+
+GameObject.prototype.destroy = function() {
+  return `${this.name} was removed from the game.`
+}
+
+function CharacterStats(props) {
+  this.healthPoints = props.healthPoints;
+  this.takeDamage = function () {
+    return `${this.name} took damage`;
+  };
+  // * takeDamage() // prototype method
+  // * should inherit destroy() from GameObject's prototype
+}
+
+function Humanoid(props) {
+  // Connect the attributes so we can use the this keyword
+  GameObject.call(this, props);
+  CharacterStats.call(this, props);
+  this.team = props.team;
+  this.weapons = props.weapons;
+  this.language = props.language;
+}
+
+GameObject.prototype.greet = function() {
+  return `${this.name} offers a greeting in ${this.language}`;
+};
+
+
 /*
+  === Humanoid (Having an appearance or character resembling that of a human.) ===
+  * should inherit destroy() from GameObject through CharacterStats
+  * should inherit takeDamage() from CharacterStats
+*/
+CharacterStats.prototype = Object.create(GameObject.prototype);
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+
+
   const mage = new Humanoid({
     createdAt: new Date(),
     dimensions: {
@@ -102,7 +145,6 @@
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-*/
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  

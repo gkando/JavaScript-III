@@ -75,12 +75,6 @@ GameObject.prototype.greet = function() {
   return `${this.name} offers a greeting in ${this.language}`;
 };
 
-
-/*
-  === Humanoid (Having an appearance or character resembling that of a human.) ===
-  * should inherit destroy() from GameObject through CharacterStats
-  * should inherit takeDamage() from CharacterStats
-*/
 CharacterStats.prototype = Object.create(GameObject.prototype);
 Humanoid.prototype = Object.create(CharacterStats.prototype);
 
